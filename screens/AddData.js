@@ -1,22 +1,24 @@
-import { View,StyleSheet, Alert } from 'react-native'
+import { View,StyleSheet, Alert,TouchableOpacity } from 'react-native'
 import { NativeBaseProvider,VStack, Box,Button,TextArea,Input,Text } from "native-base";
 import React, { useState } from 'react'
 
 export default function AddData() {
 
- const[id,setId]=useState('')
- const[name,setName]=useState('')
- const[address,setAddress]=useState('')
- const[contact,setContact]=useState('')
+ const[carNo,setCarNo]=useState('')
+ const[brand,setBrand]=useState('')
+ const[model,setModel]=useState('')
+ const[color,setColor]=useState('')
+ const[price,setPrice]=useState('')
 
 const saveData=()=>{
-    fetch('http://localhost:4000/user', {
+    fetch('http://localhost:4000/car', {
   method: 'POST',
   body: JSON.stringify({
-    id: id,
-    name: name, 
-    address: address,
-    contact:contact
+    carNo: carNo,
+    brand: brand, 
+    model: model,
+    color:color,
+    price :price
   }),
   headers: {
     'Content-type': 'application/json; charset=UTF-8',
@@ -28,27 +30,65 @@ const saveData=()=>{
 
 
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider >
+      <View style={styles.container}>
         <Text bold 
-        fontSize="3xl" 
-        mt={'10%'} ml={'30%'} 
-        style={{color: "red"}}>Save Post</Text>
+        fontSize="40"  
+        mb={'20%'}
+        style={{color: "#2c2c54"}}>Add Vehicle</Text>
     
-    <VStack mt={'10%'} space={4} alignItems="center">
-    <Input  color={'white'} size="md" width={'80%'}placeholder="Id" value={title} onChangeText={(e)=>{setTitle(e)}}/>
-    <Input   color={'white'} size="md" width={'80%'}placeholder="body" value={body} onChangeText={(e)=>{setBody(e)}}/>
-    <Input   color={'white'} size="md" width={'80%'}placeholder="UserID" value={userId} onChangeText={(e)=>{setUserId(e)}}/>
-    <Button size="sm" colorScheme="secondary" 
-    onPress={saveData}> Save Data
-     
-    </Button>
+    <VStack mb={'50%'} space={4}  color={'black'} alignItems="center">
+    <Input borderColor={'#84817a'} color={'black'} size="md" width={'80%'}placeholder="Car No" value={carNo} onChangeText={(e)=>{setCarNo(e)}}/>
+    <Input   borderColor={'#84817a'} color={'black'} size="md" width={'80%'}placeholder="Brand" value={brand} onChangeText={(e)=>{setBrand(e)}}/>
+    <Input   borderColor={'#84817a'} color={'black'} size="md" width={'80%'}placeholder="Model" value={model} onChangeText={(e)=>{setModel(e)}}/>
+    <Input   borderColor={'#84817a'} color={'black'} size="md" width={'80%'}placeholder="Color" value={color} onChangeText={(e)=>{setColor(e)}}/>
+    <Input   borderColor={'#84817a'} color={'black'} size="md" width={'80%'}placeholder="Price" value={price} onChangeText={(e)=>{setPrice(e)}}/>
+    <TouchableOpacity style={styles.btn} onPress={(saveData)}>
+        <Text style={{color:'black',fontSize:20,width:200,textAlign:'center'}}>Add Vehicle</Text>
+      </TouchableOpacity>
 
-    <Button size="sm" colorScheme="primary" 
-    onPress={console.log("hello")}> go home
-     
-    </Button>
     </VStack>
-
+    </View>
     </NativeBaseProvider>
   )
 }
+const styles = StyleSheet.create({
+  input1:{
+      marginTop:'2%',
+      borderWidth: 1,
+      padding: 10,
+      width:'80%',
+      borderRadius:100,
+      backgroundColor:'black',
+      borderColor: 'black',
+      color:'white',
+      fontSize:15
+  },
+  input2:{
+      marginTop:'5%',
+      borderWidth: 1,
+      padding: 10,
+      width:'80%',
+      borderRadius:100,backgroundColor:'black',
+      borderColor: 'black',
+      color:'white',
+      fontSize:15
+  },
+  container:{
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'#f7f1e3',
+    height:'100%'
+   },
+   btn:{
+    width:'100%',
+    padding:5,
+    backgroundColor:"#ffb142",
+    height:50,
+    alignItems:'center',
+    justifyContent:'center',
+    marginTop:'5%',
+    borderRadius:10
+
+},
+})

@@ -18,6 +18,6 @@ export default function App() {
         <Stack.Screen name="LoadData" component={LoadData} />
       </Stack.Navigator>
     </NavigationContainer>}*/
-<Register/>
+<AddData/>
   )
 }
