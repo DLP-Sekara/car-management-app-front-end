@@ -1,9 +1,12 @@
-import { View, Text,TextInput,Button,StyleSheet,TouchableOpacity } from 'react-native'
+import { View, Text,TextInput,Button,StyleSheet,TouchableOpacity,Image } from 'react-native'
 import React from 'react'
+import { color } from 'native-base/lib/typescript/theme/styled-system';
 
 export default function Login() {
   return (
     <View style={styles.container}>
+     <Image style={styles.img} source={require('../assets/v12.png')} />
+
       <TextInput style={styles.input1} placeholder='Username'/>
       <TextInput style={styles.input2} placeholder='Password'/>
       <TouchableOpacity
@@ -17,21 +20,25 @@ export default function Login() {
 
 const styles = StyleSheet.create({
     input1:{
-        marginTop:'40%',
+        marginTop:'2%',
         borderWidth: 1,
         padding: 10,
         width:'80%',
         borderRadius:100,
+        backgroundColor:'black',
         borderColor: 'black',
-        color:'red'
+        color:'white',
+        fontSize:15
     },
     input2:{
         marginTop:'5%',
         borderWidth: 1,
         padding: 10,
         width:'80%',
-        borderRadius:100,
-        borderColor: 'black'
+        borderRadius:100,backgroundColor:'black',
+        borderColor: 'black',
+        color:'white',
+        fontSize:15
     },
     container:{
      justifyContent:'center',
@@ -46,8 +53,11 @@ const styles = StyleSheet.create({
         height:50,
         alignItems:'center',
         justifyContent:'center',
-        marginTop:'3%',
+        marginTop:'5%',
         borderRadius:100
 
+    },
+    img:{
+      marginBottom:'20%',
     }
 });
