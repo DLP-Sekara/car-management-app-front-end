@@ -11,7 +11,7 @@ export default function AddData() {
  const[price,setPrice]=useState('')
 
 const saveData=()=>{
-    fetch('http://localhost:4000/car', {
+    fetch('http://192.168.1.101:3000/car', {
   method: 'POST',
   body: JSON.stringify({
     carNo: carNo,
@@ -24,8 +24,14 @@ const saveData=()=>{
     'Content-type': 'application/json; charset=UTF-8',
   },
 })
-  .then((response) =>{Alert.alert("save success")})
-  .catch((err) => {Alert.alert("Error occured")});
+  .then((response) =>{Alert.alert("save success")
+  setCarNo('');
+setBrand('');
+setModel('');
+setColor('');
+setPrice('');
+})
+  .catch((err) => {Alert.alert("error")});
 }
 
 
@@ -46,34 +52,13 @@ const saveData=()=>{
     <TouchableOpacity style={styles.btn} onPress={(saveData)}>
         <Text style={{color:'black',fontSize:20,width:200,textAlign:'center'}}>Add Vehicle</Text>
       </TouchableOpacity>
-
     </VStack>
     </View>
     </NativeBaseProvider>
   )
 }
 const styles = StyleSheet.create({
-  input1:{
-      marginTop:'2%',
-      borderWidth: 1,
-      padding: 10,
-      width:'80%',
-      borderRadius:100,
-      backgroundColor:'black',
-      borderColor: 'black',
-      color:'white',
-      fontSize:15
-  },
-  input2:{
-      marginTop:'5%',
-      borderWidth: 1,
-      padding: 10,
-      width:'80%',
-      borderRadius:100,backgroundColor:'black',
-      borderColor: 'black',
-      color:'white',
-      fontSize:15
-  },
+  
   container:{
     justifyContent:'center',
     alignItems:'center',

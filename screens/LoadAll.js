@@ -6,19 +6,22 @@ export default function LoadAll() {
 const[posts,setPosts]=useState([])
 
     useEffect(()=>{
-      fetch('https://jsonplaceholder.typicode.com/posts')
-      .then((response) => response.json())
-      .then((json) => setPosts(json));
+      fetch('http:/192.168.1.101:3000/car')
+   .then((response) => response.json())
+  .then((json) => console.log(json));
+      
     })
 
     return (
       <View style={{padding:20}}>
           <FlatList
               data={posts}
-              renderItem={({ item }) =>
+              renderItem={({ vahicle }) =>
                   <TouchableOpacity style={{borderColor:'white', borderWidth:1, marginBottom:'5%', padding:5}} onPress={()=>{console.log("hello");}}>
-                      <Text style={{marginBottom:10,fontWeight:'bold'}} >{item.title}</Text>
-                      <Text style={{marginBottom:10}} >{item.body}</Text>
+                      <Text style={{marginBottom:10,fontWeight:'bold'}} >{vahicle.brand}</Text>
+                      <Text style={{marginBottom:10}} >{vahicle.model}</Text>
+                      <Text style={{marginBottom:10}} >{vahicle.color}</Text>
+                      <Text style={{marginBottom:10}} >{vahicle.price}</Text>
                   </TouchableOpacity>
               }
           />
