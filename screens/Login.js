@@ -14,6 +14,7 @@ export default function Login() {
       >
         <Text style={{color:'#ffff',fontSize:20}}>Login</Text>
       </TouchableOpacity>
+      <Text style={styles.baseText}>Sign in</Text>
     </View>
   )
 }
@@ -59,5 +60,10 @@ const styles = StyleSheet.create({
     },
     img:{
       marginBottom:'20%',
+    },
+    baseText:{
+      color:'black',
+      fontSize:15,
+      marginTop:'5%',
     }
 });
