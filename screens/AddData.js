@@ -4,17 +4,19 @@ import React, { useState } from 'react'
 
 export default function AddData() {
 
- const[title,setTitle]=useState('')
- const[body,setBody]=useState('')
- const[userId,setUserId]=useState('')
+ const[id,setId]=useState('')
+ const[name,setName]=useState('')
+ const[address,setAddress]=useState('')
+ const[contact,setContact]=useState('')
 
 const saveData=()=>{
-    fetch('https://jsonplaceholder.typicode.com/posts', {
+    fetch('http://localhost:4000/user', {
   method: 'POST',
   body: JSON.stringify({
-    title: title,
-    body: body, 
-    userId: userId,
+    id: id,
+    name: name, 
+    address: address,
+    contact:contact
   }),
   headers: {
     'Content-type': 'application/json; charset=UTF-8',
@@ -33,7 +35,7 @@ const saveData=()=>{
         style={{color: "red"}}>Save Post</Text>
     
     <VStack mt={'10%'} space={4} alignItems="center">
-    <Input  color={'white'} size="md" width={'80%'}placeholder="Title" value={title} onChangeText={(e)=>{setTitle(e)}}/>
+    <Input  color={'white'} size="md" width={'80%'}placeholder="Id" value={title} onChangeText={(e)=>{setTitle(e)}}/>
     <Input   color={'white'} size="md" width={'80%'}placeholder="body" value={body} onChangeText={(e)=>{setBody(e)}}/>
     <Input   color={'white'} size="md" width={'80%'}placeholder="UserID" value={userId} onChangeText={(e)=>{setUserId(e)}}/>
     <Button size="sm" colorScheme="secondary" 

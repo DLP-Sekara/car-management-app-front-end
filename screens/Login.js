@@ -1,10 +1,12 @@
 import { View, Text,TextInput,Button,StyleSheet,TouchableOpacity,Image } from 'react-native'
 import React from 'react'
 import { color } from 'native-base/lib/typescript/theme/styled-system';
+import WelcomeTxt from '../components/Txt'
 
 export default function Login() {
   return (
     <View style={styles.container}>
+      <WelcomeTxt style={styles.welcomeTxt}/>
      <Image style={styles.img} source={require('../assets/v12.png')} />
 
       <TextInput style={styles.input1} placeholder='Username'/>
@@ -65,5 +67,10 @@ const styles = StyleSheet.create({
       color:'black',
       fontSize:15,
       marginTop:'5%',
+    },
+    welcomeTxt:{
+      color:'black',
+        fontSize:40,
+        margin:20
     }
 });
