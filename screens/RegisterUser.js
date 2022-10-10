@@ -10,7 +10,7 @@ export default function AddData() {
  const[contact,setContact]=useState('')
 
 const saveData=()=>{
-    fetch('http://192.168.137.1:3000/user', {
+    fetch('http:/192.168.1.101:3000/user', {
   method: 'POST',
   body: JSON.stringify({
     id: id,
@@ -22,8 +22,13 @@ const saveData=()=>{
     'Content-type': 'application/json; charset=UTF-8',
   },
 })
-  .then((response) =>{Alert.alert(response)})
-  .catch((err) => {Alert.alert("Error occured :",err.message)});
+  .then((response) =>{Alert.alert("save success")
+  setId('');
+  setName('');
+  setAddress('');
+  setContact('');
+})
+  .catch((err) => {Alert.alert("Error occured :","Error")});
 }
 
 
