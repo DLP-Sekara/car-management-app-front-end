@@ -4,8 +4,8 @@
 ## Screenshots
 
 ### 1
-![](../assets/s1.png)
+![](assets\s1.png)
 ### 2
-![](../assets/s2.png)
+![](assets/s2.png)
 ### 3
-![](../assets/s3.png)
+![](assets/s3.png)
